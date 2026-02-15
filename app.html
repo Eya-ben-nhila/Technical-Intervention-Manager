@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFlow - Intervention Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <span class="logo-text">TechFlow</span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <span id="userInitial">A</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Admin User</div>
+                        <div class="user-role" id="userRole">Administrator</div>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <div class="nav-item active" onclick="showSection('dashboard')">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                        </div>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="nav-item admin-only" onclick="showSection('create-intervention')">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
+                        </div>
+                        <span>Create Intervention</span>
+                    </div>
+                    <div class="nav-item" onclick="showSection('interventions')">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                        </div>
+                        <span>Interventions</span>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Quick Stats</div>
+                    <div class="stat-item">
+                        <div class="stat-icon todo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="quickTodo">0</div>
+                            <div class="stat-label">To Do</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon progress">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="quickProgress">0</div>
+                            <div class="stat-label">In Progress</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon done">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="quickDone">0</div>
+                            <div class="stat-label">Done</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16,17 21,12 16,7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Manage your technical interventions efficiently</p>
+                </div>
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="action-btn secondary" onclick="refreshData()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23,4 23,10 17,10"/>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                            </svg>
+                            Refresh
+                        </button>
+                        <button class="action-btn primary admin-only" onclick="showSection('create-intervention')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
+                            New Intervention
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <section id="dashboard" class="section active">
+                    <div class="dashboard-grid">
+                        <div class="stats-overview">
+                            <div class="stat-card primary">
+                                <div class="stat-header">
+                                    <div class="stat-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="8.5" cy="7" r="4"/>
+                                            <line x1="20" y1="8" x2="20" y2="14"/>
+                                            <line x1="23" y1="11" x2="17" y2="11"/>
+                                        </svg>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Total Interventions</div>
+                                        <div class="stat-value" id="totalInterventions">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon todo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">To Do</div>
+                                        <div class="stat-value" id="todoCount">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon progress">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">In Progress</div>
+                                        <div class="stat-value" id="inProgressCount">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-header">
+                                    <div class="stat-icon done">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22,4 12,14.01 9,11.01"/>
+                                        </svg>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Completed</div>
+                                        <div class="stat-value" id="doneCount">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-content">
+                            <div class="recent-interventions">
+                                <div class="section-header">
+                                    <h2>Recent Interventions</h2>
+                                    <button class="view-all-btn" onclick="showSection('interventions')">View All</button>
+                                </div>
+                                <div class="interventions-list" id="dashboardInterventions">
+                                </div>
+                            </div>
+                            
+                            <div class="quick-actions">
+                                <div class="section-header">
+                                    <h2>Quick Actions</h2>
+                                </div>
+                                <div class="action-grid">
+                                    <div class="action-card admin-only" onclick="showSection('create-intervention')">
+                                        <div class="action-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                                <line x1="8" y1="12" x2="16" y2="12"/>
+                                            </svg>
+                                        </div>
+                                        <div class="action-title">Create New</div>
+                                        <div class="action-description">Add a new intervention</div>
+                                    </div>
+                                    <div class="action-card" onclick="showSection('interventions')">
+                                        <div class="action-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                <polyline points="14,2 14,8 20,8"/>
+                                            </svg>
+                                        </div>
+                                        <div class="action-title">View All</div>
+                                        <div class="action-description">See all interventions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="create-intervention" class="section admin-only">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <h2>Create New Intervention</h2>
+                            <p>Fill in the details to create a new technical intervention</p>
+                        </div>
+                        <form class="intervention-form" onsubmit="createIntervention(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="interventionTitle">Title *</label>
+                                    <input type="text" id="interventionTitle" required placeholder="Enter intervention title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="interventionPriority">Priority *</label>
+                                    <select id="interventionPriority" required>
+                                        <option value="">Select Priority</option>
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="interventionDescription">Description *</label>
+                                    <textarea id="interventionDescription" required placeholder="Describe the intervention details..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="technicianSelect">Assign to Technician *</label>
+                                    <select id="technicianSelect" required>
+                                        <option value="">Select Technician</option>
+                                        <option value="tech1">John Smith</option>
+                                        <option value="tech2">Sarah Johnson</option>
+                                        <option value="tech3">Mike Wilson</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="showSection('dashboard')">Cancel</button>
+                                <button type="submit" class="btn-primary">Create Intervention</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="interventions" class="section">
+                    <div class="interventions-container">
+                        <div class="interventions-header">
+                            <div class="header-content">
+                                <h2>Interventions</h2>
+                                <p>Manage and track all technical interventions</p>
+                            </div>
+                            <div class="filter-controls">
+                                <div class="filter-tabs">
+                                    <button class="filter-btn active" onclick="filterInterventions('all')">All</button>
+                                    <button class="filter-btn" onclick="filterInterventions('todo')">To Do</button>
+                                    <button class="filter-btn" onclick="filterInterventions('in-progress')">In Progress</button>
+                                    <button class="filter-btn" onclick="filterInterventions('done')">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interventions-list" id="interventionsList">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

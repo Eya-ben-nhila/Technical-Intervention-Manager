@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Intervention Manager - Streamline Technical Operations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon"></div>
+                <span>TechFlow</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#login" class="nav-link">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🚀 Technical Excellence Management</span>
+                </div>
+                <h1 class="hero-title">
+                    Streamline Your <span class="gradient-text">Technical Interventions</span>
+                </h1>
+                <p class="hero-description">
+                    Empower your team with intelligent intervention management. Assign tasks, track progress, and deliver exceptional technical support with our comprehensive dashboard solution.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Faster Resolution</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Team Efficiency</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Real-time Tracking</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToLogin()">Get Started</button>
+                    <button class="btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="dashboard-preview">
+                    <div class="preview-header">
+                        <div class="preview-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="preview-title">Intervention Dashboard</div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-card">
+                            <div class="card-header">
+                                <div class="card-title">Server Maintenance</div>
+                                <div class="card-status active">In Progress</div>
+                            </div>
+                            <div class="card-meta">
+                                <span>Assigned to: John Smith</span>
+                                <span>Priority: High</span>
+                            </div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="card-header">
+                                <div class="card-title">Network Configuration</div>
+                                <div class="card-status pending">To Do</div>
+                            </div>
+                            <div class="card-meta">
+                                <span>Assigned to: Sarah Johnson</span>
+                                <span>Priority: Medium</span>
+                            </div>
+                        </div>
+                        <div class="preview-stats">
+                            <div class="preview-stat">
+                                <div class="stat-value">12</div>
+                                <div class="stat-name">Active</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="stat-value">8</div>
+                                <div class="stat-name">Completed</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="stat-value">3</div>
+                                <div class="stat-name">Pending</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features for Modern Teams</h2>
+                <p class="section-subtitle">Everything you need to manage technical interventions efficiently</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-shape">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title">Admin Control</h3>
+                    <p class="feature-description">Create and assign interventions with priority levels and detailed descriptions. Monitor team performance in real-time.</p>
+                    <div class="feature-benefits">
+                        <span>✓ Task Assignment</span>
+                        <span>✓ Priority Management</span>
+                        <span>✓ Team Analytics</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-shape">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <path d="M20 8v6M23 11h-6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title">Technician Dashboard</h3>
+                    <p class="feature-description">View assigned interventions, update status, and track progress through the complete lifecycle from To Do to Done.</p>
+                    <div class="feature-benefits">
+                        <span>✓ Personal Dashboard</span>
+                        <span>✓ Status Updates</span>
+                        <span>✓ Progress Tracking</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-shape">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11H3v2h6v-2zm0-4H3v2h6V7zm0 8H3v2h6v-2zm12-8h-6v2h6V7zm0 4h-6v2h6v-2zm0 4h-6v2h6v-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title">Lifecycle Management</h3>
+                    <p class="feature-description">Track interventions through their complete journey: To Do → In Progress → Done, with real-time status updates.</p>
+                    <div class="feature-benefits">
+                        <span>✓ Status Tracking</span>
+                        <span>✓ Progress Visualization</span>
+                        <span>✓ Completion Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple workflow for maximum efficiency</p>
+            </div>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Admin Creates Intervention</h3>
+                        <p class="step-description">Administrators create new technical interventions with detailed information, priority levels, and assign them to specific technicians.</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Technician Receives Assignment</h3>
+                        <p class="step-description">Technicians receive their assigned interventions on their personal dashboard with all necessary details and requirements.</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Track Progress & Complete</h3>
+                        <p class="step-description">Update intervention status through the lifecycle, track progress, and mark tasks as completed when finished.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login" class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-content">
+                    <h2 class="login-title">Ready to Transform Your Workflow?</h2>
+                    <p class="login-subtitle">Join thousands of teams already using TechFlow for efficient intervention management</p>
+                    <div class="login-form">
+                        <div class="role-selection">
+                            <h3>Select Your Role</h3>
+                            <div class="role-cards">
+                                <div class="role-card" onclick="selectRole('admin')">
+                                    <div class="role-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                                        </svg>
+                                    </div>
+                                    <h4>Administrator</h4>
+                                    <p>Create and manage interventions, assign tasks to technicians</p>
+                                </div>
+                                <div class="role-card" onclick="selectRole('technician')">
+                                    <div class="role-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="8.5" cy="7" r="4"/>
+                                            <path d="M20 8v6M23 11h-6"/>
+                                        </svg>
+                                    </div>
+                                    <h4>Technician</h4>
+                                    <p>View assigned interventions and update their status</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-form-fields" id="loginForm" style="display: none;">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" id="username" placeholder="Enter your username" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="password" placeholder="Enter your password" class="input-field">
+                            </div>
+                            <button class="login-btn" onclick="login()">Access Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-icon"></div>
+                    <span>TechFlow</span>
+                    <p>Streamlining technical interventions for modern teams</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#login">Get Started</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Contact</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
